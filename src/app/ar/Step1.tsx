@@ -1,34 +1,59 @@
-const Step1 = () => {
-	const onClickA = () => {
-		// 处理选项A的逻辑
-		console.log('选择了选项A');
+import React from 'react';
+import * as THREE from 'three';
+
+interface Props {
+	model: THREE.Group;
+}
+
+const Step1: React.FC<Props> = ({model: ghostModel}) => {
+	const onClickRetain = () => {
+		ghostModel.traverse((obj: any) => {
+			if (obj.isMesh && obj.material) {
+				obj.material.color.setRGB(1, 0.2, 0.2);
+				obj.material.emissive?.setRGB(1, 0, 0);
+				obj.material.emissiveIntensity = 0.5;
+			}
+		});
+
+		const startY = ghostModel.position.y;
+		const duration = 500; // ms
+		const peak = startY + 0.5;
+		const start = performance.now();
+		const animate = (t: number) => {
+			const elapsed = t - start;
+			const ratio = Math.min(elapsed / duration, 1);
+
+			ghostModel.position.y =
+				startY + Math.sin(Math.PI * ratio) * (peak - startY);
+			if (ratio < 1) requestAnimationFrame(animate);
+		};
+		requestAnimationFrame(animate);
 	};
 
-	const onClickB = () => {
+	const onClickDelete = () => {
 		// 处理选项B的逻辑
 		console.log('选择了选项B');
 	};
 
 	return (
-		/*
-		 * 幽灵提出第一个问题：“你认为数据应该永远保留，还是在任务完成后删除？”
-		 * 玩家选择选项A/B。
-		 * */
 		<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
-			<h1 className="text-3xl font-bold">幽灵：</h1>
-			<p className="text-xl">你认为数据应该永远保留，还是在任务完成后删除？</p>
+			<h1 className="text-3xl font-bold">Ghost：</h1>
+			<p className="text-xl">
+				Do you think the data should be retained forever, or deleted when the
+				task is completed?
+			</p>
 			<div className="flex gap-4 mt-4">
 				<button
-					onClick={onClickA}
+					onClick={onClickRetain}
 					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 				>
-					A
+					Retain
 				</button>
 				<button
-					onClick={onClickB}
+					onClick={onClickDelete}
 					className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
 				>
-					B
+					Delete
 				</button>
 			</div>
 		</div>
