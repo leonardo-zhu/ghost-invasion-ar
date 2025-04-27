@@ -2,7 +2,7 @@ import createGhostScene from "./createGhostScene";
 import { addClickListener } from "./events";
 import { START_MARKER_ID } from "@/constants";
 
-const setupWhiteboard = (registerAnchor: RegisterAnchor, setMessage: (message: string) => void) => {
+const setupWhiteboard = (registerAnchor: RegisterAnchor) => {
   registerAnchor(START_MARKER_ID, async (scene) => {
     const model = await createGhostScene(scene);
 
@@ -13,7 +13,6 @@ const setupWhiteboard = (registerAnchor: RegisterAnchor, setMessage: (message: s
       camera,
       canvas: renderer.domElement,
     }, () => {
-      setMessage("🖥️ 电脑 marker 点击成功");
     })
   })
 }
