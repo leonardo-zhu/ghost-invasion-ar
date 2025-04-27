@@ -1,10 +1,42 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+
+const ghostAudioSrc = '/audio/step0-ghost-voice.mp3';
 
 const Step0 = () => {
+	const audioRef = useRef<HTMLAudioElement>(null);
+	const [showText, setShowText] = useState(false);
+	const fullText =
+		"👻 You're late... This data should not have been discovered...";
+	const [displayedText, setDisplayedText] = useState('');
+
+	useEffect(() => {
+		const startTimer = setTimeout(() => {
+			audioRef.current?.play();
+			setShowText(true);
+			// typewriter effect
+			fullText.split('').forEach((char, idx) => {
+				setTimeout(() => {
+					setDisplayedText((prev) => prev + char);
+				}, idx * 60);
+			});
+		}, 2000);
+		return () => clearTimeout(startTimer);
+	}, []);
+
 	return (
-		<div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
-			👻 你来晚了……这里的数据，不该被发现……
-		</div>
+		<>
+			<audio ref={audioRef} src={ghostAudioSrc} preload="atuo" />
+			{!showText && (
+				<div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
+					Welcome to A32 lab, data security check system starting...
+				</div>
+			)}
+			{showText && (
+				<div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
+					{displayedText}
+				</div>
+			)}
+		</>
 	);
 };
 
