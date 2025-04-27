@@ -1,9 +1,39 @@
 {
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": true,
   "semi": true,
   "singleQuote": true,
-  "tabWidth": 2,
-  "printWidth": 100,
-  "trailingComma": "none",
-  "bracketSpacing": true,
-  "arrowParens": "avoid"
+  "trailingComma": "all",
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json",
+        "useTabs": false
+      }
+    },
+    {
+      "files": "package.json",
+      "options": {
+        "parser": "json",
+        "useTabs": false
+      }
+    },
+    {
+      "files": "jest.config.json",
+      "options": {
+        "parser": "json",
+        "useTabs": false
+      }
+    },
+    {
+      "files": ".babelrc",
+      "options": {
+        "parser": "json",
+        "useTabs": false
+      }
+    }
+  ]
 }
