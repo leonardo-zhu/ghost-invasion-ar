@@ -14,7 +14,7 @@
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.150"
+    "three": "^0.150.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -23,6 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
+    "@types/three": "^0.150.0",
     "eslint-config-next": "15.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
