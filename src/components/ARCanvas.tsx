@@ -13,7 +13,6 @@ const ARCanvas = () => {
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         {loading && <span>Loading Camera...</span>}
       </div>
-      <canvas className="w-full h-full"/>
     </div>
   );
 };
