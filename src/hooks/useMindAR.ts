@@ -1,9 +1,17 @@
-import { RefObject, useEffect, useState } from "react";
-import createGhostScene from "@/lib/createGhostScene";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import type { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
 export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
   const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(false);
+  const [markerStates, setMarkerStates] = useState<Map<number, boolean>>(new Map());
+
+  const callbackMap = useRef<Map<number, MarkerCallback>>(new Map());
+
+  const mindarThree = useRef<MindARThree | null>(null);
+
+  const registerAnchor = useCallback<RegisterAnchor>((index, callback) => {
+    callbackMap.current.set(index, callback);
+  }, [callbackMap])
 
   useEffect(() => {
     const container = ref?.current;
@@ -13,28 +21,26 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
     const start = async () => {
       const { MindARThree } = await import("mind-ar/dist/mindar-image-three.prod.js");
 
-      const mindarThree = new MindARThree({
+      mindarThree.current = new MindARThree({
         container,
         imageTargetSrc: "/marker.mind",
       });
 
-      const { renderer, scene, camera } = mindarThree;
-      const anchor = mindarThree.addAnchor(0);
+      const { renderer, scene, camera } = mindarThree.current;
 
-      const ghost = createGhostScene(anchor.group, scene, renderer, camera);
+      // 设置 canvas 样式（保证全屏）
+      Object.assign(renderer.domElement.style, {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: "100vw",
+        height: "100vh",
+        zIndex: "1000",
+      });
 
-      anchor.onTargetFound = () => {
-        setVisible(true);
-      };
-      
-      anchor.onTargetLost = () => {
-        setVisible(false);
-      };
-
-      await mindarThree.start();
+      await mindarThree.current.start();
 
       renderer.setAnimationLoop(() => {
-        ghost.rotation.y += 0.02;
         renderer.render(scene, camera);
       });
     };
@@ -43,8 +49,36 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
 
   }, [ref]);
 
+  useEffect(() => {
+    if (!loading && mindarThree.current) {
+      const { renderer, scene, camera } = mindarThree.current;
+
+      for (const [key, cb] of callbackMap.current) {
+        const anchor = mindarThree.current.addAnchor(key);
+
+        cb({
+          scene,
+          group: anchor.group,
+          renderer,
+          camera,
+        });
+
+        anchor.onTargetFound = () => {
+          // 目标被找到
+          setMarkerStates(pre => new Map(pre).set(key, true));
+        };
+
+        anchor.onTargetLost = () => {
+          setMarkerStates(pre => new Map(pre).set(key, false));
+        };
+      }
+
+    }
+  }, [loading, mindarThree, callbackMap]);
+
   return {
     loading,
-    visible,
+    markerStates,
+    registerAnchor
   }
 };
