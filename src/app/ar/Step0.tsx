@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import useTypeWriter from '@/hooks/useTypeWriter';
 
 const ghostAudioSrc = '/audio/step0-ghost-voice.mp3';
 
@@ -6,24 +7,23 @@ interface Props {
 	model: THREE.Group | undefined;
 }
 
+const delay = 2000; // 2 seconds
+
 const Step0: React.FC<Props> = () => {
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const [showText, setShowText] = useState(false);
-	const fullText =
-		"👻 You're late... This data should not have been discovered...";
-	const [displayedText, setDisplayedText] = useState('');
+	const displayedText = useTypeWriter(
+		"👻 You're late... This data should not have been discovered...",
+		60,
+		delay,
+	);
 
 	useEffect(() => {
 		const startTimer = setTimeout(() => {
 			audioRef.current?.play();
 			setShowText(true);
 			// typewriter effect
-			fullText.split('').forEach((char, idx) => {
-				setTimeout(() => {
-					setDisplayedText((prev) => prev + char);
-				}, idx * 60);
-			});
-		}, 2000);
+		}, delay);
 		return () => clearTimeout(startTimer);
 	}, []);
 
