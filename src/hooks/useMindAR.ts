@@ -1,7 +1,8 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect, useState } from "react";
 import createScene from "@/lib/createScene";
 
 export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const container = ref?.current;
@@ -32,6 +33,11 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
       });
     };
 
-    start();
+    start().then(() => setLoading(false));
+
   }, [ref]);
+
+  return {
+    loading
+  }
 };

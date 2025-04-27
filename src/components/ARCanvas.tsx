@@ -6,11 +6,14 @@ import { useMindAR } from "@/hooks/useMindAR";
 const ARCanvas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useMindAR(containerRef);
+  const { loading } = useMindAR(containerRef);
 
   return (
     <div className="w-full h-screen" ref={containerRef}>
-      <p className="absolute top-4 left-4 z-10">AR加载中…</p>
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        {loading && <span>Loading Camera...</span>}
+      </div>
+      <canvas className="w-full h-full"/>
     </div>
   );
 };
