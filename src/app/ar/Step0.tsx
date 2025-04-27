@@ -2,7 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 
 const ghostAudioSrc = '/audio/step0-ghost-voice.mp3';
 
-const Step0 = () => {
+interface Props {
+	model: THREE.Group | undefined;
+}
+
+const Step0: React.FC<Props> = () => {
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const [showText, setShowText] = useState(false);
 	const fullText =

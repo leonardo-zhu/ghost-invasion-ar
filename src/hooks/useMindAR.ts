@@ -9,6 +9,8 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
 
 	const callbackMap = useRef<Map<number, MarkerCallback>>(new Map());
 
+	const modelMap = useRef<Map<number, THREE.Group>>(new Map());
+
 	const mindarThree = useRef<MindARThree | null>(null);
 
 	const registerAnchor = useCallback<RegisterAnchor>(
@@ -67,16 +69,17 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
 					group: anchor.group,
 					renderer,
 					camera,
+				}).then((model) => {
+					modelMap.current.set(key, model);
+					anchor.onTargetFound = () => {
+						// 目标被找到
+						setMarkerStates((pre) => new Map(pre).set(key, true));
+					};
+
+					anchor.onTargetLost = () => {
+						setMarkerStates((pre) => new Map(pre).set(key, false));
+					};
 				});
-
-				anchor.onTargetFound = () => {
-					// 目标被找到
-					setMarkerStates((pre) => new Map(pre).set(key, true));
-				};
-
-				anchor.onTargetLost = () => {
-					setMarkerStates((pre) => new Map(pre).set(key, false));
-				};
 			}
 		}
 	}, [loading, mindarThree, callbackMap]);
@@ -84,6 +87,7 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
 	return {
 		loading,
 		markerStates,
+		modelMap: modelMap.current,
 		registerAnchor,
 	};
 };

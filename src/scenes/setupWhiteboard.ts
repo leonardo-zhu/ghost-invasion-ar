@@ -16,6 +16,8 @@ const setupWhiteboard = (registerAnchor: RegisterAnchor) => {
 			},
 			() => {},
 		);
+
+		return model;
 	});
 };
 

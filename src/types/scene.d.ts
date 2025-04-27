@@ -5,6 +5,6 @@ type Scene = {
 	camera: THREE.Camera;
 };
 
-type MarkerCallback = (scene: Scene) => void;
+type MarkerCallback = (scene: Scene) => Promise<THREE.Group>;
 
 type RegisterAnchor = (index: number, callback: MarkerCallback) => void;
