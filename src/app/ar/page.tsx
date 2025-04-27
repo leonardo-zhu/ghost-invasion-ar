@@ -4,6 +4,7 @@ import ARCanvas from './ARCanvas';
 import Step0 from './Step0';
 import Step1 from './Step1';
 import Step2 from './Step2';
+import Info from './Info';
 import {useMindAR} from '@/hooks/useMindAR';
 import {setupTerminal, setupWhiteboard} from '@/scenes';
 import {START_MARKER_ID, STEP1_MARKER_ID, STEP2_MARKER_ID} from '@/constants';
@@ -49,6 +50,7 @@ export default function ARPage() {
 			<div className="absolute top-10 left-1/2 -translate-x-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
 				Please use landscape mode on your phone
 			</div>
+			<Info step={currentStep} />
 			<Step />
 		</>
 	);
