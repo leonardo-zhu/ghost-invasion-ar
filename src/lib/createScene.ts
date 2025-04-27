@@ -7,6 +7,8 @@ const createScene = (group: THREE.Group, scene: THREE.Scene) => {
     new THREE.MeshStandardMaterial({ color: 0x00ff00 })
   );
 
+  cube.rotation.x = -Math.PI / 2;
+
   const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
   scene.add(light);
   group.add(cube);
