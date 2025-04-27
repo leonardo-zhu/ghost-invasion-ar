@@ -1,12 +1,7 @@
-import { STEP1_MARKER_ID } from "@/constants";
+import {STEP1_MARKER_ID} from '@/constants';
 
 const setupTerminal = (registerAnchor: RegisterAnchor) => {
-  registerAnchor(STEP1_MARKER_ID, async (scene) => {
-
-
-  });
-}
-
+	registerAnchor(STEP1_MARKER_ID, async (scene) => {});
+};
 
 export default setupTerminal;
-
