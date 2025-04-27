@@ -29,7 +29,7 @@ export default function ARPage() {
 		<>
 			<ARCanvas containerRef={containerRef} loading={loading} />
 			<div className="absolute top-10 left-1/2 -translate-x-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
-				请使用手机横屏浏览
+				Please use landscape mode on your phone
 			</div>
 			<StepProvider externalStep={currentStep}>
 				<Step />

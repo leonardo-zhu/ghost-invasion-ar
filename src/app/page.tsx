@@ -12,6 +12,15 @@ export default function Home() {
 					height={100}
 					priority
 				/>
+				<p className="text-sm mt-4 leading-relaxed text-center sm:text-left max-w-2xl">
+					🌍 <span className="font-semibold">Background:</span> A32 Lab was once
+					an ordinary programming classroom, but recent frequent network
+					anomalies, automatic screen flickers, and late-night printer
+					activations have sparked rumors of a{' '}
+					<span className="italic">&#34;digital ghost&#34;</span> left behind by
+					a graduate student dismissed years ago for a data breach. As the new
+					tech assistant, you are tasked with uncovering the truth...
+				</p>
 				<ul className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
 					<li className="mb-2 tracking-[-.01em]">
 						Get started by click{' '}
