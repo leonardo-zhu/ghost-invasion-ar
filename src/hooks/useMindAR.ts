@@ -23,7 +23,7 @@ export const useMindAR = (ref: RefObject<HTMLDivElement | null>) => {
 
       mindarThree.current = new MindARThree({
         container,
-        imageTargetSrc: "/marker.mind",
+        imageTargetSrc: "/targets.mind",
       });
 
       const { renderer, scene, camera } = mindarThree.current;
