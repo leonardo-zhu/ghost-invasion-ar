@@ -8,8 +8,6 @@ interface Props {
 const Info: React.FC<Props> = (props) => {
 	const {step} = props;
 
-	console.log('step', step);
-
 	let tips: string | undefined = undefined;
 
 	if (step === STEP1_MARKER_ID) {
@@ -18,6 +16,10 @@ const Info: React.FC<Props> = (props) => {
 		tips = 'Level 2: Finding the Encryption Key';
 	} else if (step === STEP3_MARKER_ID) {
 		tips = 'Level 3: Final decision-making';
+	}
+
+	if (!tips) {
+		return null;
 	}
 
 	return (
