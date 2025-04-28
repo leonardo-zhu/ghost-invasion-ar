@@ -51,7 +51,7 @@ export default function ARPage() {
 				case STEP2_MARKER_ID:
 					return <Step2 model={model} />;
 				case STEP3_MARKER_ID:
-					return <Step0 model={model} />;
+					return <Step3 model={model} />;
 				default:
 					return null;
 			}
