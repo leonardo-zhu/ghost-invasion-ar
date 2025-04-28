@@ -57,7 +57,7 @@ const Step1: React.FC<Props> = ({model: ghostModel}) => {
 					<Button type="primary" onClick={onClickRetain}>
 						Retain
 					</Button>
-					<Button onClick={onClickDelete} danger>
+					<Button onClick={onClickDelete} type="primary" danger>
 						Delete
 					</Button>
 				</div>
