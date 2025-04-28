@@ -4,10 +4,21 @@ import ARCanvas from './ARCanvas';
 import Step0 from './Step0';
 import Step1 from './Step1';
 import Step2 from './Step2';
+import Step3 from './Step3';
 import Info from './Info';
 import {useMindAR} from '@/hooks/useMindAR';
-import {setupTerminal, setupWhiteboard, setupPrinter} from '@/scenes';
-import {START_MARKER_ID, STEP1_MARKER_ID, STEP2_MARKER_ID} from '@/constants';
+import {
+	setupTerminal,
+	setupWhiteboard,
+	setupPrinter,
+	setupGhostTerminal,
+} from '@/scenes';
+import {
+	START_MARKER_ID,
+	STEP1_MARKER_ID,
+	STEP2_MARKER_ID,
+	STEP3_MARKER_ID,
+} from '@/constants';
 
 export default function ARPage() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -19,6 +30,7 @@ export default function ARPage() {
 		setupWhiteboard(registerAnchor);
 		setupTerminal(registerAnchor);
 		setupPrinter(registerAnchor);
+		setupGhostTerminal(registerAnchor);
 	}, []);
 
 	const currentStep = useMemo(() => {
@@ -38,6 +50,8 @@ export default function ARPage() {
 					return <Step1 model={model} />;
 				case STEP2_MARKER_ID:
 					return <Step2 model={model} />;
+				case STEP3_MARKER_ID:
+					return <Step0 model={model} />;
 				default:
 					return null;
 			}
