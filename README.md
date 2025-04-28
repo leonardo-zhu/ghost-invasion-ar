@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ghost Invasion AR Experience
 
-## Getting Started
+An interactive augmented reality experience that explores digital ethics through a ghost narrative. Users progress
+through multiple levels, making ethical decisions about data retention and digital legacy.
 
-First, run the development server:
+## Overview
+
+This AR application allows users to interact with a ghost entity through their device camera. The experience consists of
+three main levels:
+
+1. **Level 1:** Unlocking the computer terminal
+2. **Level 2:** Finding the Encryption Key
+3. **Level 3:** Final decision-making
+
+## Features
+
+- Marker-based AR using MindAR
+- Interactive 3D ghost model with animations
+- Multi-step narrative with decision points
+- Audio narration
+- Type-writer text effects
+
+## Tech Stack
+
+- React/Next.js
+- TypeScript
+- THREE.js
+- MindAR for AR tracking
+- Ant Design component library
+
+## Installation
 
 ```bash
-npm run dev
-# or
+# Clone the repository
+git clone <repository-url>
+
+# Install dependencies
+yarn install
+
+# Start development server
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Open the app on a mobile device
+2. Allow camera permissions
+3. Point the camera at designated markers
+4. Follow the on-screen prompts and make decisions
+5. Use landscape mode for optimal experience
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+- `src/app/ar/` - AR experience components
+- `src/constants/` - Application constants
+- `src/hooks/` - Custom React hooks
+- `src/scenes/` - 3D scene setup functions
 
-To learn more about Next.js, take a look at the following resources:
+## Credits
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 3D models and assets used in this project
+- Audio sources
+- MindAR library
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[License information]
