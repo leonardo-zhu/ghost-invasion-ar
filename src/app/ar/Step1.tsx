@@ -41,7 +41,7 @@ const Step1: React.FC<Props> = ({model: ghostModel}) => {
 
 	return (
 		<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-black/60 px-4 py-2 rounded-xl z-[1010]">
-			<audio autoPlay src={ghostAudioSrc} preload="atuo" />
+			<audio autoPlay src={ghostAudioSrc} preload="auto" />
 			<h1 className="text-3xl font-bold">👻 Ghost：</h1>
 			<p className="text-xl">{displayedTitle}</p>
 			{displayedTitle === title && (
