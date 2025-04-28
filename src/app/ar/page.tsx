@@ -6,7 +6,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Info from './Info';
 import {useMindAR} from '@/hooks/useMindAR';
-import {setupTerminal, setupWhiteboard} from '@/scenes';
+import {setupTerminal, setupWhiteboard, setupPrinter} from '@/scenes';
 import {START_MARKER_ID, STEP1_MARKER_ID, STEP2_MARKER_ID} from '@/constants';
 
 export default function ARPage() {
@@ -18,6 +18,7 @@ export default function ARPage() {
 	useEffect(() => {
 		setupWhiteboard(registerAnchor);
 		setupTerminal(registerAnchor);
+		setupPrinter(registerAnchor);
 	}, []);
 
 	const currentStep = useMemo(() => {
