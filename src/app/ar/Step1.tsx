@@ -1,6 +1,8 @@
 import React from 'react';
 import * as THREE from 'three';
 import useTypeWriter from '@/hooks/useTypeWriter';
+import {useGlobalContext} from '@/app/contexts/GlobalContext';
+import {Button} from 'antd';
 
 interface Props {
 	model: THREE.Group;
@@ -12,9 +14,12 @@ const title =
 	'Do you think the data should be retained forever, or deleted when the task is completed?';
 
 const Step1: React.FC<Props> = ({model: ghostModel}) => {
+	const {updateContext} = useGlobalContext();
 	const displayedTitle = useTypeWriter(title);
 
 	const onClickRetain = () => {
+		updateContext('isRetainedData', true);
+
 		ghostModel.traverse((obj: any) => {
 			if (obj.isMesh && obj.material) {
 				obj.material.color.setRGB(1, 0.2, 0.2);
@@ -39,8 +44,7 @@ const Step1: React.FC<Props> = ({model: ghostModel}) => {
 	};
 
 	const onClickDelete = () => {
-		// 处理选项B的逻辑
-		console.log('选择了选项B');
+		updateContext('isRetainedData', false);
 	};
 
 	return (
@@ -50,18 +54,12 @@ const Step1: React.FC<Props> = ({model: ghostModel}) => {
 			<p className="text-xl">{displayedTitle}</p>
 			{displayedTitle === title && (
 				<div className="flex gap-4 mt-4">
-					<button
-						onClick={onClickRetain}
-						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-					>
+					<Button type="primary" onClick={onClickRetain}>
 						Retain
-					</button>
-					<button
-						onClick={onClickDelete}
-						className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-					>
+					</Button>
+					<Button onClick={onClickDelete} danger>
 						Delete
-					</button>
+					</Button>
 				</div>
 			)}
 		</div>
