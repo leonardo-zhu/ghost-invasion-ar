@@ -14,7 +14,7 @@ const Step2: React.FC<Props> = () => {
 
 	const onClickGetClip = () => {
 		// set the clipboard to the unique code
-		navigator.clipboard.writeText(UNIQUE_CODE).then(
+		navigator.clipboard.writeText(UNIQUE_CODE.replace(/–/g, '')).then(
 			() => {
 				updateContext('uniqueCode', UNIQUE_CODE);
 				setIsGetClip(true);
