@@ -20,14 +20,6 @@ const Step1: React.FC<Props> = ({model: ghostModel}) => {
 	const onClickRetain = () => {
 		updateContext('isRetainedData', true);
 
-		ghostModel.traverse((obj: any) => {
-			if (obj.isMesh && obj.material) {
-				obj.material.color.setRGB(1, 0.2, 0.2);
-				obj.material.emissive?.setRGB(1, 0, 0);
-				obj.material.emissiveIntensity = 0.5;
-			}
-		});
-
 		const startY = ghostModel.position.y;
 		const duration = 500; // ms
 		const peak = startY + 0.5;
