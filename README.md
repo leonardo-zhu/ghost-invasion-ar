@@ -1,67 +1,57 @@
-# Ghost Invasion AR Experience
+# 👻 Ghost Invasion AR: An Immersive Narrative Experience
 
-An interactive augmented reality experience that explores digital ethics through a ghost narrative. Users progress
-through multiple levels, making ethical decisions about data retention and digital legacy.
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat&logo=vercel)](https://ghost-invasion-ar.vercel.app/)
+[![HCI Project](https://img.shields.io/badge/Focus-HCI%20%26%20Interactive%20Storytelling-blue)](https://github.com/leonardo-zhu/ghost-invasion-ar)
 
-## Overview
+**Ghost Invasion AR** is a marker-based augmented reality (AR) experience that bridges physical space with a digital narrative. Built as part of a deep exploration into Human-AI Interaction and Mixed Reality, the project transforms everyday objects into interactive portals for a ghost-themed story focused on digital ethics and legacy.
 
-This AR application allows users to interact with a ghost entity through their device camera. The experience consists of
-three main levels:
+🚀 **Experience Live:** [ghost-invasion-ar.vercel.app](https://ghost-invasion-ar.vercel.app/) (Best viewed on mobile in **landscape mode**)
 
-1. **Level 1:** Unlocking the computer terminal
-2. **Level 2:** Finding the Encryption Key
-3. **Level 3:** Final decision-making
+---
 
-## Features
+## 🌟 Product Vision & Design Philosophy
 
-- Marker-based AR using MindAR
-- Interactive 3D ghost model with animations
-- Multi-step narrative with decision points
-- Audio narration
-- Type-writer text effects
+As a Product/Project-led experiment, this application focuses on:
+- **Seamless Mixed Reality Transition:** Minimizing the "uncanny valley" of AR by using physical markers (printers, terminals) as anchors for digital content.
+- **Narrative-Driven Interaction:** Moving beyond simple 3D viewing to a step-by-step narrative where user decisions affect the ghost's progression.
+- **Onboarding & UX flow:** Handling camera permissions, orientation prompts, and visual feedback for stable AR tracking in a mobile web environment.
 
-## Tech Stack
+## 🧭 Interactive Flow (Product Roadmap)
 
-- React/Next.js
-- TypeScript
-- THREE.js
-- MindAR for AR tracking
-- Ant Design component library
+The experience is structured into four distinct stages, each tied to a specific physical marker:
 
-## Installation
+1.  **Stage 0: Initialization** - Onboarding and environment setup.
+2.  **Stage 1: Terminal Breach** - Interaction with a 3D terminal to unlock credentials.
+3.  **Stage 2: Information Retrieval** - Finding the encryption key through environmental cues.
+4.  **Stage 3: Ethical Decision** - The final convergence where the user decides the fate of the "ghost's" digital legacy.
 
-```bash
-# Clone the repository
-git clone <repository-url>
+## 🛠️ Tech Stack & Implementation
 
-# Install dependencies
-yarn install
+- **Frontend:** React + Next.js (App Router)
+- **AR Engine:** [MindAR](https://hiukim.github.io/mind-ar-js-doc/) (Web-based, marker-tracking)
+- **3D Rendering:** Three.js for high-fidelity 3D model animations.
+- **State Management:** Custom React hooks for multi-stage narrative tracking.
+- **UI Architecture:** Ant Design for responsive overlays and mobile optimization.
 
-# Start development server
-yarn dev
-```
+## 📱 Getting Started & Usage
 
-## Usage
+1.  Open the [live link](https://ghost-invasion-ar.vercel.app/) on your mobile browser (Safari/Chrome).
+2.  Agree to **Camera Permissions**.
+3.  Rotate your phone to **Landscape Mode** for an optimal field of view.
+4.  Point your camera at the designated markers to trigger the ghost's appearance.
 
-1. Open the app on a mobile device
-2. Allow camera permissions
-3. Point the camera at designated markers
-4. Follow the on-screen prompts and make decisions
-5. Use landscape mode for optimal experience
+---
 
-## Project Structure
+## 📂 Project Structure
 
-- `src/app/ar/` - AR experience components
-- `src/constants/` - Application constants
-- `src/hooks/` - Custom React hooks
-- `src/scenes/` - 3D scene setup functions
+- `src/app/ar/` - The core AR logic and multi-step progression components.
+- `src/scenes/` - 3D scene initialization and asset management.
+- `src/hooks/` - AR tracking state and narrative flow logic.
 
-## Credits
+---
 
-- 3D models and assets used in this project
-- Audio sources
-- MindAR library
+## 👤 Author: Leonardo Zhu
 
-## License
-
-[License information]
+Explore more of my work in AI, HCI, and Product Management:
+- [LinkedIn](https://www.linkedin.com/in/xiaolong-zhu/)
+- [Portfolio/Resume](https://github.com/leonardo-zhu/Resume)
