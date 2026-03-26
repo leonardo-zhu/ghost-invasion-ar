@@ -55,3 +55,7 @@ The experience is structured into four distinct stages, each tied to a specific 
 Explore more of my work in AI, HCI, and Product Management:
 - [LinkedIn](https://www.linkedin.com/in/xiaolong-zhu/)
 - [Portfolio/Resume](https://github.com/leonardo-zhu/Resume)
+
+
+---
+*This README was updated and conflict-resolved by the **Antigravity AI Assistant** via a custom GitHub App.*
